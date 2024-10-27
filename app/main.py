@@ -74,9 +74,9 @@ def main():
     col1, col2 = st.columns([4,1])
 
     with col1:
-        st.write("im col1")
+        st.write("coluna 1")
     with col2:
-        st.write("im col2")
+        st.write("coluna 2")
 
 
 if __name__ == '__main__':
