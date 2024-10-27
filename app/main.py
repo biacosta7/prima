@@ -52,7 +52,8 @@ def add_sidebar():
         st.sidebar.slider(
             label=label,
             min_value=float(0.0),
-            max_value=float(data[key].max())
+            max_value=float(data[key].max()),
+            value=float(data[key].mean())
         )
 
 
