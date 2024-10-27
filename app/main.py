@@ -48,13 +48,17 @@ def add_sidebar():
         ("Fractal dimension (worst)", "fractal_dimension_worst"),
     ]
 
+    input_dict = {}
+
     for label, key in slider_labels:
-        st.sidebar.slider(
+        input_dict[key] = st.sidebar.slider(
             label=label,
             min_value=float(0.0),
             max_value=float(data[key].max()),
             value=float(data[key].mean())
         )
+    
+    return input_dict
 
 
 def main():
@@ -66,7 +70,7 @@ def main():
     )
     st.write("Bem vindo(a) ao Prima App")
 
-    add_sidebar()
+    input_data = add_sidebar()
 
     with st.container():
         st.title("Prima - Previsor de Risco e Identificador Mamográfico")
