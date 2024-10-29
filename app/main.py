@@ -17,36 +17,36 @@ def add_sidebar():
     data = get_clean_data()
 
     slider_labels = [
-        ("Radius (mean)", "radius_mean"),
-        ("Texture (mean)", "texture_mean"),
-        ("Perimeter (mean)", "perimeter_mean"),
-        ("Area (mean)", "area_mean"),
-        ("Smoothness (mean)", "smoothness_mean"),
-        ("Compactness (mean)", "compactness_mean"),
-        ("Concavity (mean)", "concavity_mean"),
-        ("Concave points (mean)", "concave points_mean"),
-        ("Symmetry (mean)", "symmetry_mean"),
-        ("Fractal dimension (mean)", "fractal_dimension_mean"),
-        ("Radius (se)", "radius_se"),
-        ("Texture (se)", "texture_se"),
-        ("Perimeter (se)", "perimeter_se"),
-        ("Area (se)", "area_se"),
-        ("Smoothness (se)", "smoothness_se"),
-        ("Compactness (se)", "compactness_se"),
-        ("Concavity (se)", "concavity_se"),
-        ("Concave points (se)", "concave points_se"),
-        ("Symmetry (se)", "symmetry_se"),
-        ("Fractal dimension (se)", "fractal_dimension_se"),
-        ("Radius (worst)", "radius_worst"),
-        ("Texture (worst)", "texture_worst"),
-        ("Perimeter (worst)", "perimeter_worst"),
-        ("Area (worst)", "area_worst"),
-        ("Smoothness (worst)", "smoothness_worst"),
-        ("Compactness (worst)", "compactness_worst"),
-        ("Concavity (worst)", "concavity_worst"),
-        ("Concave points (worst)", "concave points_worst"),
-        ("Symmetry (worst)", "symmetry_worst"),
-        ("Fractal dimension (worst)", "fractal_dimension_worst"),
+        ("Raio (média)", "radius_mean"),
+        ("Textura (média)", "texture_mean"),
+        ("Perímetro (média)", "perimeter_mean"),
+        ("Área (média)", "area_mean"),
+        ("Suavidade (média)", "smoothness_mean"),
+        ("Compacidade (média)", "compactness_mean"),
+        ("Concavidade (média)", "concavity_mean"),
+        ("Pontos côncavos (média)", "concave points_mean"),
+        ("Simetria (média)", "symmetry_mean"),
+        ("Dimensão fractal (média)", "fractal_dimension_mean"),
+        ("Raio (ep)", "radius_se"),
+        ("Textura (ep)", "texture_se"),
+        ("Perímetro (ep)", "perimeter_se"),
+        ("Área (ep)", "area_se"),
+        ("Suavidade (ep)", "smoothness_se"),
+        ("Compacidade (ep)", "compactness_se"),
+        ("Concavidade (ep)", "concavity_se"),
+        ("Pontos côncavos (ep)", "concave points_se"),
+        ("Simetria (ep)", "symmetry_se"),
+        ("Dimensão fractal (ep)", "fractal_dimension_se"),
+        ("Raio (pior)", "radius_worst"),
+        ("Textura (pior)", "texture_worst"),
+        ("Perímetro (pior)", "perimeter_worst"),
+        ("Área (pior)", "area_worst"),
+        ("Suavidade (pior)", "smoothness_worst"),
+        ("Compacidade (pior)", "compactness_worst"),
+        ("Concavidade (pior)", "concavity_worst"),
+        ("Pontos côncavos (pior)", "concave points_worst"),
+        ("Simetria (pior)", "symmetry_worst"),
+        ("Dimensão fractal (pior)", "fractal_dimension_worst"),
     ]
 
     input_dict = {}
@@ -61,8 +61,25 @@ def add_sidebar():
     
     return input_dict
 
+def get_scaled_values(input_dict):
+    data = get_clean_data()
+
+    x = data.drop(['diagnosis'], axis=1)
+
+    scaled_dict = {}
+
+    for key, value in input_dict.items():
+        max_value = x[key].max()
+        min_value = x[key].min()
+        scaled_value = ((value - min_value) / (max_value - min_value))
+        scaled_dict[key] = scaled_value
+
+    return scaled_dict
+
 def get_radar_chart(input_data):
-    categories = ['Radius', 'Texture', 'Perimeter', 'Area', 'Smoothness', 'Compactness', 'Concavity', 'Concave Points','Symmetry', 'Fractal Dimension']
+
+    input_data = get_scaled_values(input_data)
+    categories = ['Raio', 'Textura', 'Perímetro', 'Área', 'Suavidade', 'Compacidade', 'Concavidade', 'Pontos Côncavos', 'Simetria', 'Dimensão Fractal']
 
     fig = go.Figure()
 
