@@ -1,6 +1,7 @@
 import streamlit as st
 import joblib 
 import pandas as pd
+import plotly.graph_objects as go
 
 def get_clean_data():
     data = pd.read_csv("../data/data-wisconsin.csv")
@@ -60,6 +61,34 @@ def add_sidebar():
     
     return input_dict
 
+def get_radar_chart(input_data):
+    categories = ['processing cost','mechanical properties','chemical stability',
+              'thermal stability', 'device integration']
+    fig = go.Figure()
+
+    fig.add_trace(go.Scatterpolar(
+        r=[1, 5, 2, 2, 3],
+        theta=categories,
+        fill='toself',
+        name='Product A'
+    ))
+    fig.add_trace(go.Scatterpolar(
+        r=[4, 3, 2.5, 1, 2],
+        theta=categories,
+        fill='toself',
+        name='Product B'
+    ))
+
+    fig.update_layout(
+    polar=dict(
+        radialaxis=dict(
+        visible=True,
+        range=[0, 5]
+        )),
+    showlegend=False
+    )
+
+    return fig
 
 def main():
     st.set_page_config(
@@ -79,7 +108,9 @@ def main():
     col1, col2 = st.columns([4,1])
 
     with col1:
-        st.write("coluna 1")
+        radar_chart = get_radar_chart(input_data)
+        st.plotly_chart(radar_chart)
+
     with col2:
         st.write("coluna 2")
 
