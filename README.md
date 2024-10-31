@@ -4,7 +4,7 @@
 
 ## 🌐 Visão Geral
 
-O aplicativo **PRIMA (Preditor de Risco e Identificador Mamográfico)** é uma ferramenta impulsionada por Machine Learning, projetada para auxiliar profissionais da saúde no diagnóstico de câncer de mama. Utilizando um conjunto de medições, o aplicativo prevê se uma massa mamária é benigna ou maligna. Ele oferece uma representação visual dos dados de entrada por meio de um gráfico radar e exibe o diagnóstico previsto, além da probabilidade de ser benigno ou maligno. As medições podem ser inseridas manualmente ou o app poderia ser conectado à um laboratório de citologia para obter os dados diretamente de uma máquina. No entanto, a conexão direta com a máquina do laboratório não faz parte do aplicativo em si.
+O web app **PRIMA (Preditor de Risco e Identificador Mamográfico)** é uma ferramenta impulsionada por Machine Learning, projetada para auxiliar profissionais da saúde no diagnóstico de câncer de mama. Utilizando um conjunto de medições, o aplicativo prevê se uma massa mamária é benigna ou maligna. Ele oferece uma representação visual dos dados de entrada por meio de um gráfico radar e exibe o diagnóstico previsto, além da probabilidade de ser benigno ou maligno. As medições podem ser inseridas manualmente ou o app poderia ser conectado à um laboratório de citologia para obter os dados diretamente de uma máquina. No entanto, a conexão direta com a máquina do laboratório não faz parte do aplicativo em si.
 
 O app foi desenvolvido como um projeto de estudo de machine learning a partir do dataset público [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data). Observe que este conjunto de dados pode não ser confiável, pois este projeto foi criado apenas para fins de aprendizado pessoal no campo de Machine Learning e não para uso profissional à princípio.
 
@@ -55,10 +55,8 @@ streamlit run app/main.py
 ```
 Isso abrirá o aplicativo no seu navegador padrão. A partir daí, você pode carregar uma imagem de células para análise e ajustar várias configurações para personalizar a análise. Quando estiver satisfeito com os resultados, é possível exportar as medições para um arquivo CSV para análises adicionais.
 
-
-**Desenvolvido por: Beatriz Costa**
-
+<br>
+<br>
+<strong>Desenvolvido por: Beatriz Costa</strong><br>
 Inspirado por: Alejandro AO
-
-
 
