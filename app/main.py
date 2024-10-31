@@ -1,7 +1,8 @@
 import streamlit as st
-import joblib 
+from joblib import load
 import pandas as pd
 import plotly.graph_objects as go
+import numpy as np
 
 def get_clean_data():
     data = pd.read_csv("../data/data-wisconsin.csv")
@@ -135,6 +136,18 @@ def get_radar_chart(input_data):
 
     return fig
 
+def add_predictions(input_data):
+    model = load("../model/model.pkl")
+    scaler = load("../model/scaler.pkl")
+
+    input_array = np.array(list(input_data.values())).reshape(1, -1)
+
+    input_scaled_array = scaler.transform(input_array)
+
+    prediction = model.predict(input_scaled_array)
+
+    st.write(prediction)
+
 def main():
     st.set_page_config(
         page_title="Prima",
@@ -157,7 +170,7 @@ def main():
         st.plotly_chart(radar_chart)
 
     with col2:
-        st.write("coluna 2")
+        add_predictions(input_data)
 
 
 if __name__ == '__main__':
