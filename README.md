@@ -8,7 +8,7 @@ O web app **PRIMA (Preditor de Risco e Identificador Mamográfico)** é uma ferr
 
 O app foi desenvolvido como um projeto de estudo de machine learning a partir do dataset público [Breast Cancer Wisconsin (Diagnostic) Data Set](https://www.kaggle.com/datasets/uciml/breast-cancer-wisconsin-data). Observe que este conjunto de dados pode não ser confiável, pois este projeto foi criado apenas para fins de aprendizado pessoal no campo de Machine Learning e não para uso profissional à princípio.
 
-Você pode acessar uma versão ao vivo do aplicativo na plataforma Streamlit Community Cloud.
+Você pode acessar uma versão ao vivo do aplicativo na plataforma [Streamlit Community Cloud](https://prima-app.streamlit.app).
 
 ## 🛠️ Funcionalidades
 - 🔬 **Diagnóstico Previsível:** Predição da benignidade ou malignidade de massas mamárias com base em medições.
