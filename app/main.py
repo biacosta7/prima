@@ -150,9 +150,9 @@ def add_predictions(input_data):
     st.write("O agrupamento de células é:")
 
     if prediction[0] == 0:
-        st.write("Benígno")
+        st.write("<span class='diagnosis benign'>Benigno</span>", unsafe_allow_html=True)
     else:
-        st.write("Malígno")
+        st.write("<span class='diagnosis malicious'>Maligno</span>", unsafe_allow_html=True)
 
     st.write(f"Probabilidade de ser benigno: {model.predict_proba(input_scaled_array)[0][0] * 100:.2f} %")
     st.write(f"Probabilidade de ser maligno: {model.predict_proba(input_scaled_array)[0][1] * 100:.2f} %")
@@ -166,6 +166,9 @@ def main():
         initial_sidebar_state="expanded"
     )
     st.write("Bem vindo(a) ao Prima App")
+
+    with open("../assets/style.css") as f:
+        st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
 
     input_data = add_sidebar()
 
