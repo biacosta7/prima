@@ -1,3 +1,4 @@
+import os
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split
@@ -28,7 +29,9 @@ def create_model(data):
     return model, scaler
 
 def get_clean_data():
-    data = pd.read_csv("../data/data-wisconsin.csv")
+    data_path = os.path.join(os.path.dirname(__file__), "../data/data-wisconsin.csv")
+
+    data = pd.read_csv(data_path)
 
     data = data.drop(['Unnamed: 32', 'id'], axis=1)
 

@@ -1,3 +1,4 @@
+import os
 import streamlit as st
 from joblib import load
 import pandas as pd
@@ -5,7 +6,9 @@ import plotly.graph_objects as go
 import numpy as np
 
 def get_clean_data():
-    data = pd.read_csv("../data/data-wisconsin.csv")
+
+    data_path = os.path.join(os.path.dirname(__file__), "../data/data-wisconsin.csv")
+    data = pd.read_csv(data_path)
 
     data = data.drop(['Unnamed: 32', 'id'], axis=1)
 
@@ -137,8 +140,11 @@ def get_radar_chart(input_data):
     return fig
 
 def add_predictions(input_data):
-    model = load("../model/model.pkl")
-    scaler = load("../model/scaler.pkl")
+    model_path = os.path.join(os.path.dirname(__file__), "../model/model.pkl")
+    scaler_path = os.path.join(os.path.dirname(__file__), "../model/scaler.pkl")
+
+    model = load(model_path)
+    scaler = load(scaler_path)
 
     input_df = pd.DataFrame([input_data])
 
@@ -167,7 +173,9 @@ def main():
     )
     st.write("Bem vindo(a) ao Prima App")
 
-    with open("../assets/style.css") as f:
+    css_path = os.path.join(os.path.dirname(__file__), '../assets/style.css')
+
+    with open(css_path) as f:
         st.markdown(f"<style>{f.read()}<style>", unsafe_allow_html=True)
 
     input_data = add_sidebar()
