@@ -140,13 +140,23 @@ def add_predictions(input_data):
     model = load("../model/model.pkl")
     scaler = load("../model/scaler.pkl")
 
-    input_array = np.array(list(input_data.values())).reshape(1, -1)
+    input_df = pd.DataFrame([input_data])
 
-    input_scaled_array = scaler.transform(input_array)
+    input_scaled_array = scaler.transform(input_df)
 
     prediction = model.predict(input_scaled_array)
 
-    st.write(prediction)
+    st.subheader("Previsão do agrupamento de células")
+    st.write("O agrupamento de células é:")
+
+    if prediction[0] == 0:
+        st.write("Benígno")
+    else:
+        st.write("Malígno")
+
+    st.write(f"Probabilidade de ser benigno: {model.predict_proba(input_scaled_array)[0][0] * 100:.2f} %")
+    st.write(f"Probabilidade de ser maligno: {model.predict_proba(input_scaled_array)[0][1] * 100:.2f} %")
+    st.write("Este aplicativo pode ajudar profissionais médicos a fazer um diagnóstico, mas não deve ser usado como um substituto para um diagnóstico profissional.")
 
 def main():
     st.set_page_config(
