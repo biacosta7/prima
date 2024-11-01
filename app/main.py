@@ -110,14 +110,6 @@ def get_radar_chart(input_data):
     ))
     fig.add_trace(go.Scatterpolar(
         r=[
-            input_data['radius_se'], input_data['texture_se'], input_data['perimeter_se'], input_data['area_se'], input_data['smoothness_se'], input_data['compactness_se'], input_data['concavity_se'], input_data['concave points_se'], input_data['symmetry_se'],input_data['fractal_dimension_se']
-        ],
-        theta=categories,
-        fill='toself',
-        name='Erro Padrão'
-    ))
-    fig.add_trace(go.Scatterpolar(
-        r=[
             input_data['radius_worst'], input_data['texture_worst'], input_data['perimeter_worst'],
             input_data['area_worst'], input_data['smoothness_worst'], input_data['compactness_worst'],
             input_data['concavity_worst'], input_data['concave points_worst'], input_data['symmetry_worst'],
